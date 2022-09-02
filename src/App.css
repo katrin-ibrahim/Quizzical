@@ -1,0 +1,85 @@
+body{
+	background-color: #d5e2f79a;
+	margin:0;
+	font-family: 'Karla', sans-serif;
+	color: #293264;
+	overflow-x: hidden;
+	/* height: fit-content; */
+
+}
+
+.top-blob{
+  	position: fixed;
+	right: 0;
+	width: 20vw;
+	z-index: -1;
+}
+
+.bottom-blob{
+  position: fixed;
+	bottom: 0;
+	width: 18vw;
+	z-index: -1;
+}
+
+.centered{
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: safe center;
+	justify-content: safe center;
+	height: fit-content;
+}
+.game-title{
+	margin-bottom: 5px;
+}
+
+
+.game-disc{
+	font-family: 'Inter';
+	font-size: 1rem;
+	line-height: 1.2rem;
+	text-align: center;
+}
+
+.start-button{
+	margin-top: 2rem;
+	width: 11rem;
+	height: 3rem;
+	background: #4D5B9E;
+	border-radius: 15px;
+	border: none;
+	color: white;
+}
+
+.question-container{
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin: 1rem;
+}
+
+.answer{
+	background-color: transparent;
+	border: 1px solid #4D5B9E;
+	border-radius: 7px;
+	color: #293264;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 10.24px;
+	line-height: 12px;
+	text-align: center;
+	cursor: pointer;
+	margin-top:0.5rem;
+	margin-right:0.5rem;
+}
+
+.line-break{
+	background-color: #f4bae0;
+	background-color: #4D5B9E;
+	width: 100%;
+	height:1px;
+	margin-top: 1rem;
+}

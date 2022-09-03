@@ -4,7 +4,6 @@ body{
 	font-family: 'Karla', sans-serif;
 	color: #293264;
 	overflow-x: hidden;
-	/* height: fit-content; */
 
 }
 
@@ -29,16 +28,26 @@ body{
 	flex-direction: column;
 	align-items: safe center;
 	justify-content: safe center;
+}
+
+.question-list{
 	height: fit-content;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: safe center;
+	justify-content: safe center;
 }
 .game-title{
 	margin-bottom: 5px;
+	font-size: 3rem;
 }
 
 
 .game-disc{
 	font-family: 'Inter';
-	font-size: 1rem;
+	font-size: 1.5rem;
 	line-height: 1.2rem;
 	text-align: center;
 }
@@ -51,6 +60,7 @@ body{
 	border-radius: 15px;
 	border: none;
 	color: white;
+	font-size: larger;
 }
 
 .question-container{
@@ -58,22 +68,25 @@ body{
 	flex-direction: column;
 	width: 80%;
 	margin: 1rem;
+	font-size: 1.8rem;
 }
 
 .answer{
 	background-color: transparent;
 	border: 1px solid #4D5B9E;
-	border-radius: 7px;
 	color: #293264;
+	border-radius: 12px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin-top:0.8rem;
+	margin-right:0.8rem;
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 500;
-	font-size: 10.24px;
-	line-height: 12px;
+	font-size: 1.5rem;
 	text-align: center;
 	cursor: pointer;
-	margin-top:0.5rem;
-	margin-right:0.5rem;
+	
 }
 
 .line-break{

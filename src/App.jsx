@@ -44,7 +44,7 @@ function App() {
       </div>}
 
       {isStarted && 
-      <div className='centered'>
+      <div className='question-list'>
         {/* <pre>{JSON.stringify(quizData, null, 2)}</pre> */}
         <QuestionList data={quizData.results}/>
       </div>

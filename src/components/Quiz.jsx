@@ -121,7 +121,7 @@ if(isShowAnswers){
   { !isShowAnswers? 
    <button className='start-button' onClick={checkAnswers}>Check Answers</button>:
   //  <div>
-     <div style={{display:'flex', flexDirection:'column'}}>
+     <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
      <span className='game-disc'>{`You scored ${score}/5 answers`}</span>
      <button className='start-button' onClick={playAgain}>Play Again</button>
     </div>

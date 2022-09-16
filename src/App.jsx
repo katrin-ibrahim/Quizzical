@@ -31,18 +31,25 @@ function App() {
   return (
     <div className="App">
       <img src="./top-blob.png" className='top-blob'/>
+      
 
       {!isStarted && 
       <div className="centered">
         
-        <h1 className='game-title'>Quizzical</h1>
+        <div style={{display:'flex', alignItems:'center' , gap:'1rem'}}>
+          <img src='./icon.png' width='60rem' height="60rem"/>
+          <h1 className='game-title'>Quizzical</h1>
+        </div>
         <span className='game-disc'>Answer the questions and test your knowledge!</span>
         <button className='start-button' onClick={handleStart}>Start quiz</button>
       </div>}
 
       {isStarted && 
       <div className='question-list'>
-        <h1 className='game-title'>Quizzical</h1>
+        <div style={{display:'flex', alignItems:'center' , gap:'1rem'}}>
+          <img src='./icon.png' width='60rem' height="60rem"/>
+          <h1 className='game-title'>Quizzical</h1>
+        </div>
         <Quiz/>
       </div>
         }

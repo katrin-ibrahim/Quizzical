@@ -29,6 +29,7 @@ body{
 	flex-direction: column;
 	align-items: safe center;
 	justify-content: safe center;
+	gap: 0.5rem;
 }
 
 .question-list{
@@ -43,6 +44,7 @@ body{
 .game-title{
 	margin-bottom: 5px;
 	font-size: 4rem;
+	margin-top: 0;
 }
 
 
@@ -59,6 +61,8 @@ body{
 	width: 14rem;
 	height: 4rem;
 	background: #4D5B9E;
+	/* color: #ee7ec9 */
+	/* color: #FCF2AC */
 	border-radius: 15px;
 	border: none;
 	color: white;

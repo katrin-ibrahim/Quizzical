@@ -42,7 +42,7 @@ function App() {
 
       {isStarted && 
       <div className='question-list'>
-        <h1 className='game-title' style={{padding:'0.5rem'}}>Quizzical</h1>
+        <h1 className='game-title'>Quizzical</h1>
         <Quiz/>
       </div>
         }

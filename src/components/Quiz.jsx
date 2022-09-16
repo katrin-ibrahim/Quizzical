@@ -8,14 +8,13 @@ import { nanoid } from 'nanoid'
 export default function Quiz() {
     const [quizData,setQuizData] = useState([])
     const [isShowAnswers, setIsShowAnswers] = useState(false);
-    const [resetQuiz, setResetQuiz] = useState(0);
+    const [reset, setReset] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
 
     useEffect(() => {
 
       let apiLink = `https://opentdb.com/api.php?amount=5&difficulty=easy`;
-
       fetch(apiLink)
           .then(res => res.json())
           .then(data => {
@@ -47,7 +46,7 @@ export default function Quiz() {
           })
           .catch(error => console.log(error))
           .finally(() => setIsLoading(false));
-  }, [resetQuiz]);
+  }, [reset]);
 
 
   function updateClicked(qID, aID) {
@@ -73,12 +72,25 @@ function checkAnswers() {
   setIsShowAnswers(true);
 }
 
+const goToTop = () => {
+  window.scrollTo({
+      top: 0,
+      behavior: window.innerWidth > 600 ? 'auto' : 'smooth',
+  });
+};
+
+function playAgain() {
+  setIsShowAnswers(false);
+  setReset(true);
+  goToTop();    
+}
+
 let score = 0;
 
 if(isShowAnswers){
   quizData.map((question) => {
       return question.allAnswers.forEach(answer => {
-          return answer.isHeld && answer.isCorrect ? score++ : score;
+          return answer.isClicked && answer.isCorrect ? score++ : score;
       });
   });
 }
@@ -93,7 +105,7 @@ if(isShowAnswers){
               allAnswers = {question.allAnswers}
               qID = {question.id}
               type = {question.type}
-              updateHeld = {updateClicked}
+              updateClicked = {updateClicked}
               questionIndex = {index}
               isShowAnswers = {isShowAnswers}
           />
@@ -105,7 +117,15 @@ if(isShowAnswers){
   return (
   <>
   {questionElements}
-  <button className='start-button' onClick={checkAnswers}>Check Answers</button>
+
+  { !isShowAnswers? 
+   <button className='start-button' onClick={checkAnswers}>Check Answers</button>:
+  //  <div>
+     <div style={{display:'flex', flexDirection:'column'}}>
+     <span className='game-disc'>{`You scored ${score}/5 answers`}</span>
+     <button className='start-button' onClick={playAgain}>Play Again</button>
+    </div>
+  }
   </>
          
   )

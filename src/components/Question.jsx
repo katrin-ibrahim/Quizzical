@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react'
 import he from 'he'
 import { nanoid } from 'nanoid'
 
 export default function Question(props) {
-    const { allAnswers, qID, question, isShowAnswers, updateHeld} = props
-
+  const { allAnswers, qID, question, isShowAnswers, updateClicked} = props
 
   const answerButtons = allAnswers.map((answer, index) => {
-    //Held Button Styles
     console.log(answer.isClicked)
     let styles = {
       backgroundColor: answer.isClicked? "#D6DBF5" : "white",
@@ -32,15 +29,14 @@ export default function Question(props) {
 
     return (
         <button key = {nanoid()} 
-            onClick={() => updateHeld(qID, answer.id)}
+            onClick={() => updateClicked(qID, answer.id)}
             className = 'answer'
             style = {styles}
-            // data-testid = {`button${index}`}
         >
             {he.decode(allAnswers[index].value)}
         </button>
     );
-}); // end of answerButtonsJSX
+}); 
 
 
             

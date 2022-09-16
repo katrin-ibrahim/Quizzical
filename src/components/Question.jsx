@@ -1,60 +1,54 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import he from 'he'
-import { useState } from 'react'
-import Answer from './Answer'
+import { nanoid } from 'nanoid'
 
 export default function Question(props) {
-    const {question , incorrectAnswers , correctAnswer} = props
-    const [answersObj,setAnswersObj] = useState(getAllAnswers())
+    const { allAnswers, qID, question, isShowAnswers, updateHeld} = props
 
 
+  const answerButtons = allAnswers.map((answer, index) => {
+    //Held Button Styles
+    console.log(answer.isClicked)
+    let styles = {
+      backgroundColor: answer.isClicked? "#D6DBF5" : "white",
+      border: answer.isClicked? "none" : ""
+    };
+    
+    if(isShowAnswers) {
+        
+        if(answer.isClicked && answer.isCorrect){
+            styles = { backgroundColor: '#94D7A2', color: 'var(--focused-btn-color)' };
 
-    function getAllAnswers(){
-        const answersObj = []
-        for(let i = 0 ; i< incorrectAnswers.length; i++){
-            answersObj.push({text: incorrectAnswers[i], id:i, correct:false, isClicked: false})
+        } else if (answer.isClicked && answer.isCorrect === false) {
+            styles = { backgroundColor: '#F8BCBC', opacity: '50%', border: 'none', color: 'var(--focused-btn-color)' };
+
+        } else if (answer.isCorrect) {
+            styles = { backgroundColor: '#94D7A2', color: 'var(--focused-btn-color)' };
+
+        } else if (answer.isCorrect === false) {
+            styles = { opacity: '50%' };
         }
-        answersObj.push({"text": correctAnswer, "id":answersObj.length, "correct":true , isClicked: false})
-        answersObj.sort(() => Math.random() - 0.5)
-        console.log('data',answersObj)
-        return answersObj
-
     }
-    
+
+    return (
+        <button key = {nanoid()} 
+            onClick={() => updateHeld(qID, answer.id)}
+            className = 'answer'
+            style = {styles}
+            // data-testid = {`button${index}`}
+        >
+            {he.decode(allAnswers[index].value)}
+        </button>
+    );
+}); // end of answerButtonsJSX
 
 
-    const answers = answersObj.map(ans =>
-        <Answer
-        key={ans.id}
-        text={ans.text}
-        isCorrect={ans.isCorrect}
-        isClicked={ans.isClicked}
-        selectAnswer={() => selectAnswer(ans.id)}
-         />)
-  
-   
-
-   function selectAnswer(id){
-    setAnswersObj(prevAnswers => prevAnswers.map(ans =>{
-        if (ans.id != id ){
-            if(ans.isClicked)
-             return {...ans, isClicked: !ans.isClicked}
-            else{
-             return ans
-            }
-
-        }else{
-            return {...ans, isClicked: !ans.isClicked}
-        }
-     } ))
-   }
-
-    
+            
   return (
     <div className='question-container'>
         <span>{he.decode(question)}</span>
         <div className='answer-container'>
-            {answers}
+          {answerButtons}
         </div>
         <div className='line-break'></div>
     </div>

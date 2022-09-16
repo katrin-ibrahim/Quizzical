@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import './App.css'
-import QuestionList from './components/QuestionList'
+import Quiz from './components/Quiz'
 
 
 function App() {
   const [isStarted,setIsStarted] = useState(false)
-  const [quizData,setQuizData] = useState({})
+  const [rawQuizData,setRawQuizData] = useState({})
 
 
 
@@ -14,30 +14,27 @@ function App() {
     setIsStarted(true)
   }
 
-  // useEffect(()=>{
-  //   fetch('https://opentdb.com/api.php?amount=10')
-  // },[])
+
 
   useEffect(() => {
 
-      console.log("Effect ran")
+      console.log("Fetching data")
       async function getQuizData(){
-        const res = await fetch(`https://opentdb.com/api.php?amount=2`)
+        const res = await fetch(`https://opentdb.com/api.php?amount=5&difficulty=easy`)
         const data = await res.json()
-        setQuizData(data)
-        console.log(data)
+        setRawQuizData(data)
         }
       getQuizData()  
-      console.log(quizData)
+      
   }, [])
 
   return (
     <div className="App">
       <img src="./top-blob.png" className='top-blob'/>
 
-
       {!isStarted && 
       <div className="centered">
+        
         <h1 className='game-title'>Quizzical</h1>
         <span className='game-disc'>Answer the questions and test your knowledge!</span>
         <button className='start-button' onClick={handleStart}>Start quiz</button>
@@ -45,8 +42,8 @@ function App() {
 
       {isStarted && 
       <div className='question-list'>
-        {/* <pre>{JSON.stringify(quizData, null, 2)}</pre> */}
-        <QuestionList data={quizData.results}/>
+        <h1 className='game-title' style={{padding:'0.5rem'}}>Quizzical</h1>
+        <Quiz/>
       </div>
         }
 

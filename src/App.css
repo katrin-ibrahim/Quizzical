@@ -4,6 +4,7 @@ body{
 	font-family: 'Karla', sans-serif;
 	color: #293264;
 	overflow-x: hidden;
+	height: 100%;
 
 }
 
@@ -32,7 +33,7 @@ body{
 
 .question-list{
 	height: fit-content;
-	height: 100vh;
+	/* height: 100vh; */
 	width: 100vw;
 	display: flex;
 	flex-direction: column;
@@ -41,7 +42,7 @@ body{
 }
 .game-title{
 	margin-bottom: 5px;
-	font-size: 3rem;
+	font-size: 4rem;
 }
 
 
@@ -54,13 +55,14 @@ body{
 
 .start-button{
 	margin-top: 2rem;
-	width: 11rem;
-	height: 3rem;
+	width: 14rem;
+	height: 4rem;
 	background: #4D5B9E;
 	border-radius: 15px;
 	border: none;
 	color: white;
-	font-size: larger;
+	font-size: 1.5rem;
+	cursor: pointer;
 }
 
 .question-container{
@@ -96,3 +98,10 @@ body{
 	height:1px;
 	margin-top: 1rem;
 }
+
+  
+  .start-button:active {
+	box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+  }
+
+ 
